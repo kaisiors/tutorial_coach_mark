@@ -173,11 +173,10 @@ class TutorialCoachMark {
           opaque: false,
           barrierDismissible: false,
           pageBuilder: (context, _, __) {
-            return PopScope(
-              canPop: false,
-              onPopInvokedWithResult: (value, result) async =>
-                  false, // Bloquea el retroceso
-              child: const SizedBox(), // No muestra nada
+            return WillPopScope(
+              onWillPop: () async {
+                return false;
+              }, // No muestra nada
             );
           },
         );
